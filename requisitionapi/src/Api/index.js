@@ -1,52 +1,22 @@
-import React, { Component } from "react";
-import { Outline, Repositories } from "../Component";
-import Api from "../Api/index";
+import axios from "axios";
 
-class Result extends Component {
+class Api {
   constructor() {
-    super();
-
-    this.state = {
-      user: {},
-      repos: []
-    };
+    this.api = axios.create({
+      baseURL: "https://api.github.com"
+    });
   }
 
-  componentDidMount = async () => {
-    const { location } = this.props;
+   getUser = async user => {
+     const { data } = await this.api.get(`/users/${user}`);
+     return data;  
+   };
+  
+   getRepos = async user => {
+    const { data } = await this.api.get(`/users/${user}/repos`);
 
-    const user = location.state.res.login;
-
-    const repos = await Api.getRepos(user);
-
-    this.setState({ user: location.state.res, repos });
+    return data;
   };
-
-  render() {
-    const { user, repos } = this.state;
-
-    return (
-      <main className="result--container">
-        <div className="content">
-          <Outline
-            avatar_url={user.avatar_url}
-            name={user.name}
-            bio={user.bio}
-            company={user.company}
-            location={user.location}
-            public_repos={user.public_repos}
-            followers={user.followers}
-            following={user.following}
-          />
-          {repos.length ? (
-            <Repositories repos={repos} />
-          ) : (
-            <h3>Nenhum repositório encontrado</h3>
-          )}
-        </div>
-      </main>
-    );
-  }
 }
 
-export default Result;
+export default new Api();
