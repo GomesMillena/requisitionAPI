@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Outline, Repositories} from "../../Component"
-import ApiService from "../../Api";
+import Api from "../../Api";
 import './style.css';
 
 class Result extends Component {
@@ -18,7 +18,7 @@ class Result extends Component {
     
         const user = location.state.res.login;
     
-        const repos = await ApiService.getRepos(user);
+        const repos = await Api.getRepos(user);
     
         this.setState({ user: location.state.res, repos });
       };

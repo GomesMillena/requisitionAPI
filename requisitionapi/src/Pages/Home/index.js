@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {SearchBar} from "../../Component";
-import "./Home.css" ;
+import Api from "../../Api/index"
+import "./style.css" ;
 
 class Home extends Component {
     constructor() {
