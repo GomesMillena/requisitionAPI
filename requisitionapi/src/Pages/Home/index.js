@@ -19,8 +19,8 @@ class Home extends Component {
     searchUser = async () => {
       const { user } = this.state;
   
-      /*user
-        ? await ApiService.getUser(user)
+      user
+        ? await Api.getUser(user)
             .then(res =>
               this.props.history.push({
                 pathname: "/result",
@@ -32,7 +32,7 @@ class Home extends Component {
             .catch(error =>
               this.setState({ error: "Nenhum usuário encontrado!", user: "" })
             )
-        : this.setState({ error: "Por favor, insira usuário!" });*/
+        : this.setState({ error: "Por favor, insira usuário!" });
     };
   
     render() {
