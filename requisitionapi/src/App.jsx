@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Home, SearchBar} from './components';
+import {Home, Result} from './Pages';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 
@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
-        <Route  path="/" render={props => <SearchBar {...props} />} /> 
+        <Route path="/"result render={props => <Result {...props} />} /> 
       </Switch>
       </BrowserRouter>
     </div>
